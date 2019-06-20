@@ -1,30 +1,620 @@
-import QtQuick 2.1
-import org.kde.kirigami 2.4 as Kirigami
-import QtQuick.Controls 2.0 as Controls
+import QtQuick 2.5
+import QtQuick.Controls 2.5 as Controls
+import QtQuick.Layouts 1.2
+import QtQuick.Window 2.5
+import org.kde.kirigami 2.5 as Kirigami
 
 Kirigami.ApplicationWindow {
-    id: root
 
-    title: "Hello"
+  property var actualPage: basicCalculator
+  property var headerText: "basic calculator"
+  property var expression: ""
+  property var result: ""
 
-    pageStack.initialPage: mainPageComponent
+  id: root
+  title: "calculator"
+  pageStack.initialPage: actualPage
 
-    Component {
-        id: mainPageComponent
+  globalDrawer: Kirigami.GlobalDrawer {
 
-        Kirigami.Page {
-            title: "Hello"
+    actions: [
 
-            Rectangle {
-                color: "black"
-                anchors.fill: parent
-                
-                Controls.Label {
-                    text:  qsTr("Hello Kirigami")
-                    color: "white"
-                    anchors.centerIn: parent
-                }
-            }
+      Kirigami.Action {
+
+        text: "basic calculator"
+
+        onTriggered: {
+
+          headerText = "basic calculator"
+          actualPage = basicCalculator
+
         }
+
+      },
+
+      Kirigami.Action {
+
+           text: "scientific calculator"
+
+           onTriggered: {
+
+             headerText = "scientific calculator"
+             actualPage = scientificCalculator
+
+           }
+
+      },
+
+      Kirigami.Action {
+
+           text: "programmer calculator"
+
+           onTriggered: {
+
+             headerText = "programmer calculator"
+             actualPage = programmerCalculator
+
+           }
+
+      },
+
+      Kirigami.Action {
+
+           text: "help"
+
+           onTriggered: {
+
+             Qt.openUrlExternally("https://forum.kde.org/faq.php?sid=7f87f2d5f7ce46385dee36134970b351")
+
+           }
+
+      },
+
+      Kirigami.Action {
+
+           text: "about"
+
+           onTriggered: {
+
+             headerText = "about"
+             actualPage = aboutPage
+
+           }
+
+      }
+
+    ]
+
+  }
+
+  Component {
+
+    id: headerComponent
+
+    Text{
+
+      text: headerText
+      color: "red"
+      anchors.centerIn: parent
+      horizontalAlignment: Text.AlignHCenter
+
     }
+
+  }
+
+  Component {
+
+    id: basicCalculator
+
+    Kirigami.Page {
+
+      titleDelegate: headerComponent
+
+      Rectangle {
+
+        color: "blue"
+
+        x: 0
+        width: parent.width
+
+        y: 0
+        height: parent.height*0.07916
+
+        Text {
+
+          text: expression
+          anchors.centerIn: parent
+
+        }
+
+      }
+
+      Rectangle {
+
+        color: "blue"
+
+        x: 0
+        width: parent.width
+
+        y: parent.height*0.07916
+        height: parent.height*0.07916
+
+        Text {
+
+          text: result
+          anchors.centerIn: parent
+
+        }
+
+      }
+
+      Controls.Button {
+
+        text: "("
+
+        background: Rectangle {
+
+          color: "#c8c8c8"
+
+        }
+
+        x: 0
+        width: parent.width*0.2425
+
+        y: parent.height*0.1683
+        height: parent.height*0.1583
+
+        onClicked: expression+="("
+
+      }
+
+      Controls.Button {
+
+        text: ")"
+
+        background: Rectangle {
+
+          color: "#c8c8c8"
+
+        }
+
+        x: parent.width*0.2525
+        width: parent.width*0.2425
+
+        y: parent.height*0.1683
+        height: parent.height*0.1583
+
+        onClicked: expression+=")"
+
+      }
+
+      Controls.Button {
+
+        text: "CE"
+
+        background: Rectangle {
+
+          color: "#c8c8c8"
+
+        }
+
+        x: parent.width*0.505
+        width: parent.width*0.2425
+
+        y: parent.height*0.1683
+        height: parent.height*0.1583
+
+        onClicked: expression=expression.substr(0, expression.length-1)
+
+      }
+
+      Controls.Button {
+
+        text: "C"
+
+        background: Rectangle {
+
+          color: "#c8c8c8"
+
+        }
+
+        x: parent.width*0.7575
+        width: parent.width*0.2425
+
+        y: parent.height*0.1683
+        height: parent.height*0.1583
+
+        onClicked: expression=""
+
+      }
+
+      Controls.Button {
+
+        text: "1"
+
+        background: Rectangle {
+
+          color: "#c8c8c8"
+
+        }
+
+        x: 0
+        width: parent.width*0.2425
+
+        y: parent.height*0.3366
+        height: parent.height*0.1583
+
+        onClicked: expression+="1"
+
+      }
+
+      Controls.Button {
+
+        text: "2"
+
+        background: Rectangle {
+
+          color: "#c8c8c8"
+
+        }
+
+        x: parent.width*0.2525
+        width: parent.width*0.2425
+
+        y: parent.height*0.3366
+        height: parent.height*0.1583
+
+        onClicked: expression+="2"
+
+      }
+
+      Controls.Button {
+
+        text: "3"
+
+        background: Rectangle {
+
+          color: "#c8c8c8"
+
+        }
+
+        x: parent.width*0.505
+        width: parent.width*0.2425
+
+        y: parent.height*0.3366
+        height: parent.height*0.1583
+
+        onClicked: expression+="3"
+
+      }
+
+      Controls.Button {
+
+        text: "+"
+
+        background: Rectangle {
+
+          color: "#c8c8c8"
+
+        }
+
+        x: parent.width*0.7575
+        width: parent.width*0.2425
+
+        y: parent.height*0.3366
+        height: parent.height*0.1583
+
+        onClicked: expression+="+"
+
+      }
+
+      Controls.Button {
+
+        text: "4"
+
+        background: Rectangle {
+
+          color: "#c8c8c8"
+
+        }
+
+        x: 0
+        width: parent.width*0.2425
+
+        y: parent.height*0.505
+        height: parent.height*0.1583
+
+        onClicked: expression+="4"
+
+      }
+
+      Controls.Button {
+
+        text: "5"
+
+        background: Rectangle {
+
+          color: "#c8c8c8"
+
+        }
+
+        x: parent.width*0.2525
+        width: parent.width*0.2425
+
+        y: parent.height*0.505
+        height: parent.height*0.1583
+
+        onClicked: expression+="5"
+
+      }
+
+      Controls.Button {
+
+        text: "6"
+
+        background: Rectangle {
+
+          color: "#c8c8c8"
+
+        }
+
+        x: parent.width*0.505
+        width: parent.width*0.2425
+
+        y: parent.height*0.505
+        height: parent.height*0.1583
+
+        onClicked: expression+="6"
+
+      }
+
+      Controls.Button {
+
+        text: "-"
+
+        background: Rectangle {
+
+          color: "#c8c8c8"
+
+        }
+
+        x: parent.width*0.7575
+        width: parent.width*0.2425
+
+        y: parent.height*0.505
+        height: parent.height*0.1583
+
+        onClicked: expression+="-"
+
+      }
+
+      Controls.Button {
+
+        text: "7"
+
+        background: Rectangle {
+
+          color: "#c8c8c8"
+
+        }
+
+        x: 0
+        width: parent.width*0.2425
+
+        y: parent.height*0.6733
+        height: parent.height*0.1583
+
+        onClicked: expression+="7"
+
+      }
+
+      Controls.Button {
+
+        text: "8"
+
+        background: Rectangle {
+
+          color: "#c8c8c8"
+
+        }
+
+        x: parent.width*0.2525
+        width: parent.width*0.2425
+
+        y: parent.height*0.6733
+        height: parent.height*0.1583
+
+        onClicked: expression+="8"
+
+      }
+
+      Controls.Button {
+
+        text: "9"
+
+        background: Rectangle {
+
+          color: "#c8c8c8"
+
+        }
+
+        x: parent.width*0.505
+        width: parent.width*0.2425
+
+        y: parent.height*0.6733
+        height: parent.height*0.1583
+
+        onClicked: expression+="9"
+
+      }
+
+      Controls.Button {
+
+        text: "*"
+
+        background: Rectangle {
+
+          color: "#c8c8c8"
+
+        }
+
+        x: parent.width*0.7575
+        width: parent.width*0.2425
+
+        y: parent.height*0.6733
+        height: parent.height*0.1583
+
+        onClicked: expression+="*"
+
+      }
+
+      Controls.Button {
+
+        text: "0"
+
+        background: Rectangle {
+
+          color: "#c8c8c8"
+
+        }
+
+        x: 0
+        width: parent.width*0.2425
+
+        y: parent.height*0.8416
+        height: parent.height*0.1583
+
+        onClicked: expression+="0"
+
+      }
+
+      Controls.Button {
+
+        text: "."
+
+        background: Rectangle {
+
+          color: "#c8c8c8"
+
+        }
+
+        x: parent.width*0.2525
+        width: parent.width*0.2425
+
+        y: parent.height*0.8416
+        height: parent.height*0.1583
+
+        onClicked: expression+="."
+
+      }
+
+      Controls.Button {
+
+        text: "="
+
+        background: Rectangle {
+
+          color: "#c8c8c8"
+
+        }
+
+        x: parent.width*0.505
+        width: parent.width*0.2425
+
+        y: parent.height*0.8416
+        height: parent.height*0.1583
+
+        onClicked: {
+
+          expression=""
+          showPassiveNotification("It'll work. It'll...")
+
+        }
+
+      }
+
+      Controls.Button {
+
+        text: "/"
+
+        background: Rectangle {
+
+          color: "#c8c8c8"
+
+        }
+
+        x: parent.width*0.7575
+        width: parent.width*0.2425
+
+        y: parent.height*0.8416
+        height: parent.height*0.1583
+
+        onClicked: expression+="/"
+
+      }
+
+    }
+
+  }
+
+  Component {
+
+    id: scientificCalculator
+
+    Kirigami.Page {
+
+      titleDelegate: headerComponent
+
+      Text {
+
+        text:  "scientific calculator"
+        color: "red"
+        anchors.centerIn: parent
+
+      }
+
+    }
+
+  }
+
+  Component {
+
+    id: programmerCalculator
+
+    Kirigami.Page {
+
+      titleDelegate: headerComponent
+
+      Text {
+
+        text:  "programmer calculator"
+        color: "red"
+        anchors.centerIn: parent
+
+      }
+
+    }
+
+  }
+
+  Component {
+
+    id: aboutPage
+
+    Kirigami.Page {
+
+      titleDelegate: headerComponent
+
+      Text {
+
+        text:  "about page"
+        color: "red"
+        anchors.centerIn: parent
+
+      }
+
+    }
+
+  }
+
 }

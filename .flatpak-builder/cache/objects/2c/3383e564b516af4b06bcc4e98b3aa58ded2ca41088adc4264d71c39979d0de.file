@@ -1,0 +1,5 @@
+[Application]
+name=org.kde.hellokirigami
+runtime=org.kde.Platform/x86_64/5.12
+sdk=org.kde.Sdk/x86_64/5.12
+tags=nightly;

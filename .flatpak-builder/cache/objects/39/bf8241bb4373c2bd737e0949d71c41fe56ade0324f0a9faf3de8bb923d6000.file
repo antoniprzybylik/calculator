@@ -1,0 +1,24 @@
+[Application]
+name=org.kde.hellokirigami
+runtime=org.kde.Platform/x86_64/5.12
+sdk=org.kde.Sdk/x86_64/5.12
+tags=nightly;
+command=hellokirigami
+
+[Context]
+shared=network;ipc;
+sockets=x11;wayland;
+devices=dri;
+filesystems=home;xdg-run/dconf;~/.config/dconf:ro;xdg-config/kdeglobals:ro;
+
+[Session Bus Policy]
+com.canonical.AppMenu.Registrar=talk
+org.freedesktop.Notifications=talk
+
+[Extension org.kde.hellokirigami.Debug]
+directory=lib/debug
+autodelete=true
+no-autodownload=true
+
+[Build]
+built-extensions=org.kde.hellokirigami.Debug;

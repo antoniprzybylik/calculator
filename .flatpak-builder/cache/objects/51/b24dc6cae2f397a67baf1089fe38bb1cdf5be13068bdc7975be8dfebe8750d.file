@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component type="desktop-application">
+  <id>org.kde.calculator</id>
+  <name>plasma mobile calculator app</name>
+  <summary>A short summary describing what this software is about</summary>
+  <metadata_license>GPL (http://www.gnu.org/licenses/gpl-3.0.txt)</metadata_license>
+  <developer_name>Antoni Przybylik</developer_name>
+  <description>
+    <p>features:</p>
+    <ul>
+      <li>basic calculator</li>
+      <li>scientific calculator</li>
+      <li>programmer calculator</li>
+    </ul>
+  </description>
+</component>

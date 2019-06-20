@@ -1,0 +1,5 @@
+[Runtime]
+name=org.kde.hellokirigami.Debug
+
+[ExtensionOf]
+ref=app/org.kde.hellokirigami/x86_64/master

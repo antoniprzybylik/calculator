@@ -1,0 +1,6 @@
+# ninja log v5
+0	28	0	src/CMakeFiles/hellokirigami_autogen	9a3e9d7fb4baea5d
+0	28	0	src/hellokirigami_autogen/mocs_compilation.cpp	9a3e9d7fb4baea5d
+28	35	1561029747865763146	src/qrc_resources.cpp	ec4b67ad5b8befd0
+36	45	1561029747875762917	src/CMakeFiles/hellokirigami.dir/hellokirigami_autogen/mocs_compilation.cpp.o	855586d334c66ce
+35	46	1561029747875762917	src/CMakeFiles/hellokirigami.dir/qrc_resources.cpp.o	87603ab5a483aec0
