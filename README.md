@@ -3,7 +3,9 @@
 Calculator is a plasma mobile application that allows you to make calculations. Application includes:
 
 -basic calculator
+
 -scientific calculator
+
 -programmer calculator
 
 ## Building
