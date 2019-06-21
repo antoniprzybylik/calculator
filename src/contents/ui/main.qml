@@ -3,6 +3,7 @@ import QtQuick.Controls 2.5 as Controls
 import QtQuick.Layouts 1.2
 import QtQuick.Window 2.5
 import org.kde.kirigami 2.5 as Kirigami
+import org.kde.plasma.core 2.1 as PlasmaCore
 
 Kirigami.ApplicationWindow {
 
@@ -94,7 +95,7 @@ Kirigami.ApplicationWindow {
     Text{
 
       text: headerText
-      color: "red"
+      color: PlasmaCore.ColorScope.textColor
       anchors.centerIn: parent
       horizontalAlignment: Text.AlignHCenter
 
@@ -109,10 +110,15 @@ Kirigami.ApplicationWindow {
     Kirigami.Page {
 
       titleDelegate: headerComponent
+      background: Rectangle {
+
+        color: PlasmaCore.ColorScope.backgroundColor
+
+      }
 
       Rectangle {
 
-        color: "blue"
+        color: PlasmaCore.ColorScope.highlightedTextColor
 
         x: 0
         width: parent.width
@@ -123,6 +129,7 @@ Kirigami.ApplicationWindow {
         Text {
 
           text: expression
+          font.pixelSize: parent.height*0.75
           anchors.centerIn: parent
 
         }
@@ -131,7 +138,7 @@ Kirigami.ApplicationWindow {
 
       Rectangle {
 
-        color: "blue"
+        color: PlasmaCore.ColorScope.highlightedTextColor
 
         x: 0
         width: parent.width
@@ -142,6 +149,7 @@ Kirigami.ApplicationWindow {
         Text {
 
           text: result
+          font.pixelSize: parent.height*0.75
           anchors.centerIn: parent
 
         }
@@ -151,6 +159,7 @@ Kirigami.ApplicationWindow {
       Controls.Button {
 
         text: "("
+        font.pixelSize: height*0.75
 
         background: Rectangle {
 
@@ -171,6 +180,7 @@ Kirigami.ApplicationWindow {
       Controls.Button {
 
         text: ")"
+        font.pixelSize: height*0.75
 
         background: Rectangle {
 
@@ -191,6 +201,7 @@ Kirigami.ApplicationWindow {
       Controls.Button {
 
         text: "CE"
+        font.pixelSize: height*0.75
 
         background: Rectangle {
 
@@ -211,6 +222,7 @@ Kirigami.ApplicationWindow {
       Controls.Button {
 
         text: "C"
+        font.pixelSize: height*0.75
 
         background: Rectangle {
 
@@ -231,6 +243,7 @@ Kirigami.ApplicationWindow {
       Controls.Button {
 
         text: "1"
+        font.pixelSize: height*0.75
 
         background: Rectangle {
 
@@ -251,6 +264,7 @@ Kirigami.ApplicationWindow {
       Controls.Button {
 
         text: "2"
+        font.pixelSize: height*0.75
 
         background: Rectangle {
 
@@ -271,6 +285,7 @@ Kirigami.ApplicationWindow {
       Controls.Button {
 
         text: "3"
+        font.pixelSize: height*0.75
 
         background: Rectangle {
 
@@ -291,6 +306,7 @@ Kirigami.ApplicationWindow {
       Controls.Button {
 
         text: "+"
+        font.pixelSize: height*0.75
 
         background: Rectangle {
 
@@ -311,6 +327,7 @@ Kirigami.ApplicationWindow {
       Controls.Button {
 
         text: "4"
+        font.pixelSize: height*0.75
 
         background: Rectangle {
 
@@ -331,6 +348,7 @@ Kirigami.ApplicationWindow {
       Controls.Button {
 
         text: "5"
+        font.pixelSize: height*0.75
 
         background: Rectangle {
 
@@ -351,6 +369,7 @@ Kirigami.ApplicationWindow {
       Controls.Button {
 
         text: "6"
+        font.pixelSize: height*0.75
 
         background: Rectangle {
 
@@ -371,6 +390,7 @@ Kirigami.ApplicationWindow {
       Controls.Button {
 
         text: "-"
+        font.pixelSize: height*0.75
 
         background: Rectangle {
 
@@ -391,6 +411,7 @@ Kirigami.ApplicationWindow {
       Controls.Button {
 
         text: "7"
+        font.pixelSize: height*0.75
 
         background: Rectangle {
 
@@ -411,6 +432,7 @@ Kirigami.ApplicationWindow {
       Controls.Button {
 
         text: "8"
+        font.pixelSize: height*0.75
 
         background: Rectangle {
 
@@ -431,6 +453,7 @@ Kirigami.ApplicationWindow {
       Controls.Button {
 
         text: "9"
+        font.pixelSize: height*0.75
 
         background: Rectangle {
 
@@ -451,6 +474,7 @@ Kirigami.ApplicationWindow {
       Controls.Button {
 
         text: "*"
+        font.pixelSize: height*0.75
 
         background: Rectangle {
 
@@ -471,6 +495,7 @@ Kirigami.ApplicationWindow {
       Controls.Button {
 
         text: "0"
+        font.pixelSize: height*0.75
 
         background: Rectangle {
 
@@ -491,6 +516,7 @@ Kirigami.ApplicationWindow {
       Controls.Button {
 
         text: "."
+        font.pixelSize: height*0.75
 
         background: Rectangle {
 
@@ -511,6 +537,7 @@ Kirigami.ApplicationWindow {
       Controls.Button {
 
         text: "="
+        font.pixelSize: height*0.75
 
         background: Rectangle {
 
@@ -527,7 +554,7 @@ Kirigami.ApplicationWindow {
         onClicked: {
 
           expression=""
-          showPassiveNotification("It'll work. It'll...")
+          showPassiveNotification("result")
 
         }
 
@@ -536,6 +563,7 @@ Kirigami.ApplicationWindow {
       Controls.Button {
 
         text: "/"
+        font.pixelSize: height*0.75
 
         background: Rectangle {
 
