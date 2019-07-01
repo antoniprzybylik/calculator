@@ -2,14 +2,16 @@
 #include <QQmlApplicationEngine>
 #include <QtQml>
 #include <QUrl>
+#include <QObject>
+#include "ComputeExpression.h"
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication app(argc, argv);
-    QCoreApplication::setOrganizationName("KDE");
-    QCoreApplication::setOrganizationDomain("kde.org");
-    QCoreApplication::setApplicationName("HelloKirigami");
+    QCoreApplication::setApplicationName("Calculator");
+
+    qmlRegisterType<ComputeExpression>("computeexpression", 1, 0, "ComputeExpression");
 
     QQmlApplicationEngine engine;
 

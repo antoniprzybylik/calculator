@@ -3,7 +3,18 @@ import QtQuick.Controls 2.5 as Controls
 import QtQuick.Layouts 1.2
 import QtQuick.Window 2.5
 import org.kde.kirigami 2.5 as Kirigami
-import org.kde.plasma.core 2.1 as PlasmaCore
+import computeexpression 1.0
+
+// ComputeExpression {
+//         id: computer
+//         onComputed: {
+//             if (success) {
+//                 status.text = qsTr('&lt;font color="green"&gt;Key generation succeeded.&lt;/font&gt;')
+//             } else {
+//                 status.text = qsTr('&lt;font color="red"&gt;Key generation failed&lt;/font&gt;')
+//             }
+//         }
+//     }
 
 Kirigami.ApplicationWindow {
 
@@ -15,6 +26,12 @@ Kirigami.ApplicationWindow {
   id: root
   title: "calculator"
   pageStack.initialPage: actualPage
+
+  ComputeExpression {
+
+    id: computer
+
+  }
 
   globalDrawer: Kirigami.GlobalDrawer {
 
@@ -95,7 +112,7 @@ Kirigami.ApplicationWindow {
     Text{
 
       text: headerText
-      color: PlasmaCore.ColorScope.textColor
+      color: Kirigami.Theme.textColor
       anchors.centerIn: parent
       horizontalAlignment: Text.AlignHCenter
 
@@ -112,13 +129,13 @@ Kirigami.ApplicationWindow {
       titleDelegate: headerComponent
       background: Rectangle {
 
-        color: PlasmaCore.ColorScope.backgroundColor
+        color: Kirigami.Theme.backgroundColor
 
       }
 
       Rectangle {
 
-        color: PlasmaCore.ColorScope.highlightedTextColor
+        color: Kirigami.Theme.highlightedTextColor
 
         x: 0
         width: parent.width
@@ -131,6 +148,7 @@ Kirigami.ApplicationWindow {
           text: expression
           font.pixelSize: parent.height*0.75
           anchors.centerIn: parent
+          color: Kirigami.Theme.textColor
 
         }
 
@@ -138,7 +156,7 @@ Kirigami.ApplicationWindow {
 
       Rectangle {
 
-        color: PlasmaCore.ColorScope.highlightedTextColor
+        color: Kirigami.Theme.highlightedTextColor
 
         x: 0
         width: parent.width
@@ -151,6 +169,7 @@ Kirigami.ApplicationWindow {
           text: result
           font.pixelSize: parent.height*0.75
           anchors.centerIn: parent
+          color: Kirigami.Theme.textColor
 
         }
 
@@ -553,7 +572,9 @@ Kirigami.ApplicationWindow {
 
         onClicked: {
 
-          expression=""
+          computer.expression = expression
+          result = computer.result
+          expression = result
           showPassiveNotification("result")
 
         }

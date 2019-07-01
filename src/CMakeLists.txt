@@ -1,5 +1,6 @@
 set(calculator_SRCS
     main.cpp
+    ComputeExpression.cpp
     )
 
 qt5_add_resources(RESOURCES resources.qrc)
