@@ -575,7 +575,6 @@ Kirigami.ApplicationWindow {
           computer.expression = expression
           result = computer.result
           expression = result
-          showPassiveNotification("result")
 
         }
 

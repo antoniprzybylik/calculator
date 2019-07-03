@@ -19,6 +19,7 @@ class ComputeExpression : public QObject
 
     QString m_expression;
     QString m_result;
+    QString compute(QString);
 
   public slots:
 
