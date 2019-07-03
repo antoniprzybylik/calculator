@@ -9,8 +9,8 @@ QString ex;
 
 bool ComputeSegment(int, int);
 bool apply(int, int, int);
-long long Wrnum(int, int);
-long long Wlnum(int, int);
+long double Wrnum(int, int);
+long double Wlnum(int, int);
 template <typename type> bool con(vector<type>, type);
 
 int ll, lr;
@@ -113,7 +113,7 @@ bool ComputeSegment(int l, int r)
 bool apply(int i, int l, int r)
 {
 
-  long long result;
+  long double result;
 
   switch( ex[i].toLatin1() )
   {
@@ -136,14 +136,20 @@ bool apply(int i, int l, int r)
 
   }
 
-  QString retval=to_string(result).c_str();
+  string preval = to_string (result);
+  preval.erase ( preval.find_last_not_of('0') + 1, string::npos );
+
+  if( preval.back() == '.' )
+    preval.erase( preval.end()-1 );
+
+  QString retval=preval.c_str();
   ex.replace( ll, lr-ll, retval );
 
   return true;
 
 }
 
-long long Wlnum(int i, int l)
+long double Wlnum(int i, int l)
 {
 
   int r=i;
@@ -173,7 +179,7 @@ long long Wlnum(int i, int l)
 
   i++;
 
-  long long li=0;
+  long double li=0;
 
   while( ( ex[i].toLatin1() >= '0' ) && ( ex[i].toLatin1() <= '9' ) && ( i <= r ) )
   {
@@ -189,10 +195,10 @@ long long Wlnum(int i, int l)
 
 }
 
-long long Wrnum(int i, int r)
+long double Wrnum(int i, int r)
 {
 
-  long long l=0;
+  long double l=0;
   int m=1;
 
   if( ex[i].toLatin1() == '-' )
