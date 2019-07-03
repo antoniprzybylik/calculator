@@ -154,7 +154,7 @@ long double Wlnum(int i, int l)
 
   int r=i;
 
-  while( ( ex[i].toLatin1() >= '0' ) && ( ex[i].toLatin1() <= '9' ) && ( i >= l ) )
+  while( ( ( ( ex[i].toLatin1() >= '0' ) && ( ex[i].toLatin1() <= '9' ) ) || ( ex[i].toLatin1() == '.' ) ) && ( i >= l ) )
   {
 
     i--;
@@ -191,6 +191,27 @@ long double Wlnum(int i, int l)
 
   }
 
+  if( ex[i].toLatin1() != '.' )
+  {
+
+    return li*m;
+
+  }
+
+  i++;
+
+  int mn=1;
+
+  while( ( ex[i].toLatin1() >= '0' ) && ( ex[i].toLatin1() <= '9' ) && ( i <= r ) )
+  {
+
+    mn*=10;
+    li+=static_cast<long double>(ex[i].toLatin1()-'0')/mn;
+
+    i++;
+
+  }
+
   return li*m;
 
 }
@@ -214,6 +235,29 @@ long double Wrnum(int i, int r)
 
     l*=10;
     l+=ex[i].toLatin1()-'0';
+
+    i++;
+
+  }
+
+  if( ex[i].toLatin1() != '.' )
+  {
+
+    lr=i;
+
+    return l*m;
+
+  }
+
+  i++;
+
+  int mn=1;
+
+  while( ( ex[i].toLatin1() >= '0' ) && ( ex[i].toLatin1() <= '9' ) && ( i <= r ) )
+  {
+
+    mn*=10;
+    l+=static_cast<long double>(ex[i].toLatin1()-'0')/mn;
 
     i++;
 
