@@ -44,27 +44,31 @@ Kirigami.ApplicationWindow {
 
       Kirigami.Action {
 
-           text: "scientific calculator"
+        text: "scientific calculator"
 
-           onTriggered: {
+        enabled: false
 
-             headerText = "scientific calculator"
-             actualPage = scientificCalculator
+        onTriggered: {
 
-           }
+          headerText = "scientific calculator"
+          actualPage = scientificCalculator
+
+        }
 
       },
 
       Kirigami.Action {
 
-           text: "programmer calculator"
+        text: "programmer calculator"
 
-           onTriggered: {
+        enabled: false
 
-             headerText = "programmer calculator"
-             actualPage = programmerCalculator
+        onTriggered: {
 
-           }
+          headerText = "programmer calculator"
+          actualPage = programmerCalculator
+
+        }
 
       },
 
@@ -86,7 +90,8 @@ Kirigami.ApplicationWindow {
 
            onTriggered: {
 
-             Qt.openUrlExternally("https://www.plasma-mobile.org/")
+             headerText = "about"
+             actualPage = aboutPage
 
            }
 
@@ -742,8 +747,13 @@ Kirigami.ApplicationWindow {
 
       Text {
 
-        text:  "about page"
-        color: "red"
+        text: "Plasma Mobile website: <a href=\"https://www.plasma-mobile.org/\">https://www.plasma-mobile.org/</a> <br> <br>
+               Plasma Mobile FAQ: <a href=\"https://www.plasma-mobile.org/faq/\">https://www.plasma-mobile.org/faq/</a> <br> <br>
+               Plasma Mobile developer docs: <a href=\"https://docs.plasma-mobile.org/\">https://docs.plasma-mobile.org/</a> <br> <br>
+               Calculator source: <a href=\"https://github.com/antoniprzybylik/calculator\">https://github.com/antoniprzybylik/calculator</a>"
+
+        onLinkActivated: Qt.openUrlExternally(link)
+        color: Kirigami.Theme.textColor
         anchors.centerIn: parent
 
       }
