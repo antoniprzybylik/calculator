@@ -4,7 +4,7 @@ Calculator is a plasma mobile application that allows you to make calculations. 
 
 -basic calculator
 
-This features'll soon be added to the Calculator:
+This features will soon be added to the Calculator:
 
 -scientific calculator
 
