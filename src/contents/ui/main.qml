@@ -708,7 +708,6 @@ Kirigami.ApplicationWindow {
       Text {
 
         text:  "scientific calculator"
-        color: "red"
         anchors.centerIn: parent
 
       }
@@ -728,7 +727,6 @@ Kirigami.ApplicationWindow {
       Text {
 
         text:  "programmer calculator"
-        color: "red"
         anchors.centerIn: parent
 
       }
