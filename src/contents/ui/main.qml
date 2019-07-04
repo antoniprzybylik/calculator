@@ -5,21 +5,13 @@ import QtQuick.Window 2.5
 import org.kde.kirigami 2.5 as Kirigami
 import computeexpression 1.0
 
-// ComputeExpression {
-//         id: computer
-//         onComputed: {
-//             if (success) {
-//                 status.text = qsTr('&lt;font color="green"&gt;Key generation succeeded.&lt;/font&gt;')
-//             } else {
-//                 status.text = qsTr('&lt;font color="red"&gt;Key generation failed&lt;/font&gt;')
-//             }
-//         }
-//     }
-
 Kirigami.ApplicationWindow {
 
   property var actualPage: basicCalculator
   property var headerText: "basic calculator"
+
+  property var sexpression: ""
+
   property var expression: ""
   property var result: ""
 
@@ -94,8 +86,7 @@ Kirigami.ApplicationWindow {
 
            onTriggered: {
 
-             headerText = "about"
-             actualPage = aboutPage
+             Qt.openUrlExternally("https://www.plasma-mobile.org/")
 
            }
 
@@ -145,7 +136,7 @@ Kirigami.ApplicationWindow {
 
         Text {
 
-          text: expression
+          text: sexpression
           font.pixelSize: parent.height*0.75
           anchors.centerIn: parent
           color: Kirigami.Theme.textColor
@@ -192,7 +183,12 @@ Kirigami.ApplicationWindow {
         y: parent.height*0.1683
         height: parent.height*0.1583
 
-        onClicked: expression+="("
+        onClicked: {
+
+          expression+="("
+          sexpression+="("
+
+        }
 
       }
 
@@ -213,7 +209,12 @@ Kirigami.ApplicationWindow {
         y: parent.height*0.1683
         height: parent.height*0.1583
 
-        onClicked: expression+=")"
+        onClicked: {
+
+          expression+=")"
+          sexpression+=")"
+
+        }
 
       }
 
@@ -234,7 +235,12 @@ Kirigami.ApplicationWindow {
         y: parent.height*0.1683
         height: parent.height*0.1583
 
-        onClicked: expression=expression.substr(0, expression.length-1)
+        onClicked: {
+
+          expression=expression.substr(0, expression.length-1)
+          sexpression=sexpression.substr(0, sexpression.length-1)
+
+        }
 
       }
 
@@ -255,7 +261,12 @@ Kirigami.ApplicationWindow {
         y: parent.height*0.1683
         height: parent.height*0.1583
 
-        onClicked: expression=""
+        onClicked: {
+
+          expression=""
+          sexpression=""
+
+        }
 
       }
 
@@ -276,7 +287,12 @@ Kirigami.ApplicationWindow {
         y: parent.height*0.3366
         height: parent.height*0.1583
 
-        onClicked: expression+="1"
+        onClicked: {
+
+          expression+="1"
+          sexpression+="1"
+
+        }
 
       }
 
@@ -297,7 +313,12 @@ Kirigami.ApplicationWindow {
         y: parent.height*0.3366
         height: parent.height*0.1583
 
-        onClicked: expression+="2"
+        onClicked: {
+
+          expression+="2"
+          sexpression+="2"
+
+        }
 
       }
 
@@ -318,7 +339,12 @@ Kirigami.ApplicationWindow {
         y: parent.height*0.3366
         height: parent.height*0.1583
 
-        onClicked: expression+="3"
+        onClicked: {
+
+          expression+="3"
+          sexpression+="3"
+
+        }
 
       }
 
@@ -339,7 +365,12 @@ Kirigami.ApplicationWindow {
         y: parent.height*0.3366
         height: parent.height*0.1583
 
-        onClicked: expression+="+"
+        onClicked: {
+
+          expression+="+"
+          sexpression+="+"
+
+        }
 
       }
 
@@ -360,7 +391,12 @@ Kirigami.ApplicationWindow {
         y: parent.height*0.505
         height: parent.height*0.1583
 
-        onClicked: expression+="4"
+        onClicked: {
+
+          expression+="4"
+          sexpression+="4"
+
+        }
 
       }
 
@@ -381,7 +417,12 @@ Kirigami.ApplicationWindow {
         y: parent.height*0.505
         height: parent.height*0.1583
 
-        onClicked: expression+="5"
+        onClicked: {
+
+          expression+="5"
+          sexpression+="5"
+
+        }
 
       }
 
@@ -402,7 +443,12 @@ Kirigami.ApplicationWindow {
         y: parent.height*0.505
         height: parent.height*0.1583
 
-        onClicked: expression+="6"
+        onClicked: {
+
+          expression+="6"
+          sexpression+="6"
+
+        }
 
       }
 
@@ -423,7 +469,12 @@ Kirigami.ApplicationWindow {
         y: parent.height*0.505
         height: parent.height*0.1583
 
-        onClicked: expression+="-"
+        onClicked: {
+
+          expression+="-"
+          sexpression+="-"
+
+        }
 
       }
 
@@ -444,7 +495,12 @@ Kirigami.ApplicationWindow {
         y: parent.height*0.6733
         height: parent.height*0.1583
 
-        onClicked: expression+="7"
+        onClicked: {
+
+          expression+="7"
+          sexpression+="7"
+
+        }
 
       }
 
@@ -465,7 +521,12 @@ Kirigami.ApplicationWindow {
         y: parent.height*0.6733
         height: parent.height*0.1583
 
-        onClicked: expression+="8"
+        onClicked: {
+
+          expression+="8"
+          sexpression+="8"
+
+        }
 
       }
 
@@ -486,13 +547,18 @@ Kirigami.ApplicationWindow {
         y: parent.height*0.6733
         height: parent.height*0.1583
 
-        onClicked: expression+="9"
+        onClicked: {
+
+          expression+="9"
+          sexpression+="9"
+
+        }
 
       }
 
       Controls.Button {
 
-        text: "*"
+        text: "×"
         font.pixelSize: height*0.75
 
         background: Rectangle {
@@ -507,7 +573,12 @@ Kirigami.ApplicationWindow {
         y: parent.height*0.6733
         height: parent.height*0.1583
 
-        onClicked: expression+="*"
+        onClicked: {
+
+          expression+="*"
+          sexpression+="×"
+
+        }
 
       }
 
@@ -528,7 +599,12 @@ Kirigami.ApplicationWindow {
         y: parent.height*0.8416
         height: parent.height*0.1583
 
-        onClicked: expression+="0"
+        onClicked: {
+
+          expression+="0"
+          sexpression+="0"
+
+        }
 
       }
 
@@ -549,7 +625,12 @@ Kirigami.ApplicationWindow {
         y: parent.height*0.8416
         height: parent.height*0.1583
 
-        onClicked: expression+="."
+        onClicked: {
+
+          expression+="."
+          sexpression+="."
+
+        }
 
       }
 
@@ -575,6 +656,7 @@ Kirigami.ApplicationWindow {
           computer.expression = expression
           result = computer.result
           expression = result
+          sexpression = result
 
         }
 
@@ -582,7 +664,7 @@ Kirigami.ApplicationWindow {
 
       Controls.Button {
 
-        text: "/"
+        text: "÷"
         font.pixelSize: height*0.75
 
         background: Rectangle {
@@ -597,7 +679,12 @@ Kirigami.ApplicationWindow {
         y: parent.height*0.8416
         height: parent.height*0.1583
 
-        onClicked: expression+="/"
+        onClicked: {
+
+          expression+="/"
+          sexpression+="÷"
+
+        }
 
       }
 

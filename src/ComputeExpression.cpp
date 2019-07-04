@@ -1,6 +1,8 @@
 #include <ComputeExpression.h>
 #include <bits/stdc++.h>
 
+//#define DEBUG
+
 using namespace std;
 
 vector< vector<char> > operators={ { '*', '/' },
@@ -28,6 +30,30 @@ template <typename type> bool con(vector<type> v, type t)
 
 bool ComputeSegment(int l, int r)
 {
+
+  #ifdef DEBUG
+
+  cerr << "\nstart " << l << ' ' << r << '\n';
+
+  for(int i=0;i<ex.size();i++)
+  {
+
+    cerr << ex[i].toLatin1();
+
+  }
+
+  cerr << '\n';
+
+  for(int i=l;i<=r;i++)
+  {
+
+    cerr << ex[i].toLatin1();
+
+  }
+
+  cerr << '\n';
+
+  #endif
 
   for(int i=l;i<=r;i++)
   {
@@ -65,12 +91,19 @@ bool ComputeSegment(int l, int r)
 
         ComputeSegment(i+1, p-1);
 
-        i+=ex.size()-ps;
+        i=p+ex.size()-ps;
         r+=ex.size()-ps;
 
       }
       else
       {
+
+        #ifdef DEBUG
+
+        cerr << "Syntax Error! l - " << l << " r - " << r << '\n';
+        cerr << "missing bracket i - " << i << '\n';
+
+        #endif
 
         return false;
 
@@ -103,8 +136,38 @@ bool ComputeSegment(int l, int r)
 
   }
 
+  #ifdef DEBUG
+
+  for(int i=0;i<ex.size();i++)
+  {
+
+    cerr << ex[i].toLatin1();
+
+  }
+
+  cerr << '\n';
+
+  cerr << "remove " << l-1 << " - " << ex[l-1].toLatin1() << ' ' << r+1 << " - " << ex[r+1].toLatin1() << '\n';
+
+  #endif
+
   ex.remove(l-1, 1);
-  ex.remove(r+1, 1);
+  ex.remove(r, 1);
+
+  #ifdef DEBUG
+
+  for(int i=0;i<ex.size();i++)
+  {
+
+    cerr << ex[i].toLatin1();
+
+  }
+
+  cerr << '\n';
+
+  cerr << "stop " << l << ' ' << r << "\n\n";
+
+  #endif
 
   return true;
 
@@ -277,7 +340,7 @@ QString ComputeExpression::compute(QString e)
   ex.prepend("(");
   ex.append(")");
 
-  if( !ComputeSegment(0, ex.size()-1) )
+  if( !ComputeSegment(1, ex.size()-2) )
     return "Syntax Error!";
 
   return ex;
