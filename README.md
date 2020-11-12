@@ -12,11 +12,11 @@ This features will soon be added to the Calculator:
 
 ## Building
 
-Use flatpak-builder to install Calculator
+Use flatpak-builder to install Calculator:
 
 flatpak-builder flatpak-build --force-clean --ccache *.json
 
-Ensure that you have installed KDE SDK
+Previously, ensure that you have installed KDE SDK:
 
 flatpak install flathub org.kde.Sdk
 
@@ -31,9 +31,10 @@ to run Calculator
 ## Authors
 
 Antoni Przybylik
+Nicolas Fella
 
 ## License
 
-GPL (http://www.gnu.org/licenses/gpl-3.0.txt)
+GPL v3.0 (https://raw.githubusercontent.com/antoniprzybylik/calculator/master/LICENSE)
 
 
