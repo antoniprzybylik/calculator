@@ -4,5 +4,6 @@
         <file alias="BasicCalculatorPage.qml">contents/ui/BasicCalculatorPage.qml</file>
         <file alias="ScientificCalculatorPage.qml">contents/ui/ScientificCalculatorPage.qml</file>
         <file alias="ProgrammerCalculatorPage.qml">contents/ui/ProgrammerCalculatorPage.qml</file>
+        <file alias="CalcButton.qml">contents/ui/CalcButton.qml</file>
     </qresource>
 </RCC>

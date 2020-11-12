@@ -8,575 +8,181 @@ import computeexpression 1.0
 Kirigami.Page {
 
     title: "Basic Calculator"
-      background: Rectangle {
 
-        color: Kirigami.Theme.backgroundColor
-
-      }
-
-      Rectangle {
-
-        color: Kirigami.Theme.highlightedTextColor
-
-        x: 0
-        width: parent.width
-
-        y: 0
-        height: parent.height*0.07916
-
-        Text {
-
+    header: Column {
+        Kirigami.Heading {
           text: sexpression
-          font.pixelSize: parent.height*0.75
-          anchors.centerIn: parent
-          color: Kirigami.Theme.textColor
-
+            width: parent.width
+            level: 1
+            horizontalAlignment: Text.AlignHCenter
         }
 
-      }
-
-      Rectangle {
-
-        color: Kirigami.Theme.highlightedTextColor
-
-        x: 0
-        width: parent.width
-
-        y: parent.height*0.07916
-        height: parent.height*0.07916
-
-        Text {
-
+        Kirigami.Heading {
           text: result
-          font.pixelSize: parent.height*0.75
-          anchors.centerIn: parent
-          color: Kirigami.Theme.textColor
-
+          width: parent.width
+          level: 1
+          horizontalAlignment: Text.AlignHCenter
         }
-
-      }
-
-      Controls.Button {
-
-        text: "("
-        font.pixelSize: height*0.75
-
-        background: Rectangle {
-
-          color: "#c8c8c8"
-
-        }
-
-        x: 0
-        width: parent.width*0.2425
-
-        y: parent.height*0.1683
-        height: parent.height*0.1583
-
-        onClicked: {
-
-          expression+="("
-          sexpression+="("
-
-        }
-
-      }
-
-      Controls.Button {
-
-        text: ")"
-        font.pixelSize: height*0.75
-
-        background: Rectangle {
-
-          color: "#c8c8c8"
-
-        }
-
-        x: parent.width*0.2525
-        width: parent.width*0.2425
-
-        y: parent.height*0.1683
-        height: parent.height*0.1583
-
-        onClicked: {
-
-          expression+=")"
-          sexpression+=")"
-
-        }
-
-      }
-
-      Controls.Button {
-
-        text: "CE"
-        font.pixelSize: height*0.75
-
-        background: Rectangle {
-
-          color: "#c8c8c8"
-
-        }
-
-        x: parent.width*0.505
-        width: parent.width*0.2425
-
-        y: parent.height*0.1683
-        height: parent.height*0.1583
-
-        onClicked: {
-
-          expression=expression.substr(0, expression.length-1)
-          sexpression=sexpression.substr(0, sexpression.length-1)
-
-        }
-
-      }
-
-      Controls.Button {
-
-        text: "C"
-        font.pixelSize: height*0.75
-
-        background: Rectangle {
-
-          color: "#c8c8c8"
-
-        }
-
-        x: parent.width*0.7575
-        width: parent.width*0.2425
-
-        y: parent.height*0.1683
-        height: parent.height*0.1583
-
-        onClicked: {
-
-          expression=""
-          sexpression=""
-
-        }
-
-      }
-
-      Controls.Button {
-
-        text: "1"
-        font.pixelSize: height*0.75
-
-        background: Rectangle {
-
-          color: "#c8c8c8"
-
-        }
-
-        x: 0
-        width: parent.width*0.2425
-
-        y: parent.height*0.3366
-        height: parent.height*0.1583
-
-        onClicked: {
-
-          expression+="1"
-          sexpression+="1"
-
-        }
-
-      }
-
-      Controls.Button {
-
-        text: "2"
-        font.pixelSize: height*0.75
-
-        background: Rectangle {
-
-          color: "#c8c8c8"
-
-        }
-
-        x: parent.width*0.2525
-        width: parent.width*0.2425
-
-        y: parent.height*0.3366
-        height: parent.height*0.1583
-
-        onClicked: {
-
-          expression+="2"
-          sexpression+="2"
-
-        }
-
-      }
-
-      Controls.Button {
-
-        text: "3"
-        font.pixelSize: height*0.75
-
-        background: Rectangle {
-
-          color: "#c8c8c8"
-
-        }
-
-        x: parent.width*0.505
-        width: parent.width*0.2425
-
-        y: parent.height*0.3366
-        height: parent.height*0.1583
-
-        onClicked: {
-
-          expression+="3"
-          sexpression+="3"
-
-        }
-
-      }
-
-      Controls.Button {
-
-        text: "+"
-        font.pixelSize: height*0.75
-
-        background: Rectangle {
-
-          color: "#c8c8c8"
-
-        }
-
-        x: parent.width*0.7575
-        width: parent.width*0.2425
-
-        y: parent.height*0.3366
-        height: parent.height*0.1583
-
-        onClicked: {
-
-          expression+="+"
-          sexpression+="+"
-
-        }
-
-      }
-
-      Controls.Button {
-
-        text: "4"
-        font.pixelSize: height*0.75
-
-        background: Rectangle {
-
-          color: "#c8c8c8"
-
-        }
-
-        x: 0
-        width: parent.width*0.2425
-
-        y: parent.height*0.505
-        height: parent.height*0.1583
-
-        onClicked: {
-
-          expression+="4"
-          sexpression+="4"
-
-        }
-
-      }
-
-      Controls.Button {
-
-        text: "5"
-        font.pixelSize: height*0.75
-
-        background: Rectangle {
-
-          color: "#c8c8c8"
-
-        }
-
-        x: parent.width*0.2525
-        width: parent.width*0.2425
-
-        y: parent.height*0.505
-        height: parent.height*0.1583
-
-        onClicked: {
-
-          expression+="5"
-          sexpression+="5"
-
-        }
-
-      }
-
-      Controls.Button {
-
-        text: "6"
-        font.pixelSize: height*0.75
-
-        background: Rectangle {
-
-          color: "#c8c8c8"
-
-        }
-
-        x: parent.width*0.505
-        width: parent.width*0.2425
-
-        y: parent.height*0.505
-        height: parent.height*0.1583
-
-        onClicked: {
-
-          expression+="6"
-          sexpression+="6"
-
-        }
-
-      }
-
-      Controls.Button {
-
-        text: "-"
-        font.pixelSize: height*0.75
-
-        background: Rectangle {
-
-          color: "#c8c8c8"
-
-        }
-
-        x: parent.width*0.7575
-        width: parent.width*0.2425
-
-        y: parent.height*0.505
-        height: parent.height*0.1583
-
-        onClicked: {
-
-          expression+="-"
-          sexpression+="-"
-
-        }
-
-      }
-
-      Controls.Button {
-
-        text: "7"
-        font.pixelSize: height*0.75
-
-        background: Rectangle {
-
-          color: "#c8c8c8"
-
-        }
-
-        x: 0
-        width: parent.width*0.2425
-
-        y: parent.height*0.6733
-        height: parent.height*0.1583
-
-        onClicked: {
-
-          expression+="7"
-          sexpression+="7"
-
-        }
-
-      }
-
-      Controls.Button {
-
-        text: "8"
-        font.pixelSize: height*0.75
-
-        background: Rectangle {
-
-          color: "#c8c8c8"
-
-        }
-
-        x: parent.width*0.2525
-        width: parent.width*0.2425
-
-        y: parent.height*0.6733
-        height: parent.height*0.1583
-
-        onClicked: {
-
-          expression+="8"
-          sexpression+="8"
-
-        }
-
-      }
-
-      Controls.Button {
-
-        text: "9"
-        font.pixelSize: height*0.75
-
-        background: Rectangle {
-
-          color: "#c8c8c8"
-
-        }
-
-        x: parent.width*0.505
-        width: parent.width*0.2425
-
-        y: parent.height*0.6733
-        height: parent.height*0.1583
-
-        onClicked: {
-
-          expression+="9"
-          sexpression+="9"
-
-        }
-
-      }
-
-      Controls.Button {
-
-        text: "×"
-        font.pixelSize: height*0.75
-
-        background: Rectangle {
-
-          color: "#c8c8c8"
-
-        }
-
-        x: parent.width*0.7575
-        width: parent.width*0.2425
-
-        y: parent.height*0.6733
-        height: parent.height*0.1583
-
-        onClicked: {
-
-          expression+="*"
-          sexpression+="×"
-
-        }
-
-      }
-
-      Controls.Button {
-
-        text: "0"
-        font.pixelSize: height*0.75
-
-        background: Rectangle {
-
-          color: "#c8c8c8"
-
-        }
-
-        x: 0
-        width: parent.width*0.2425
-
-        y: parent.height*0.8416
-        height: parent.height*0.1583
-
-        onClicked: {
-
-          expression+="0"
-          sexpression+="0"
-
-        }
-
-      }
-
-      Controls.Button {
-
-        text: "."
-        font.pixelSize: height*0.75
-
-        background: Rectangle {
-
-          color: "#c8c8c8"
-
-        }
-
-        x: parent.width*0.2525
-        width: parent.width*0.2425
-
-        y: parent.height*0.8416
-        height: parent.height*0.1583
-
-        onClicked: {
-
-          expression+="."
-          sexpression+="."
-
-        }
-
-      }
-
-      Controls.Button {
-
-        text: "="
-        font.pixelSize: height*0.75
-
-        background: Rectangle {
-
-          color: "#c8c8c8"
-
-        }
-
-        x: parent.width*0.505
-        width: parent.width*0.2425
-
-        y: parent.height*0.8416
-        height: parent.height*0.1583
-
-        onClicked: {
-
-          computer.expression = expression
-          result = computer.result
-          expression = result
-          sexpression = result
-
-        }
-
-      }
-
-      Controls.Button {
-
-        text: "÷"
-        font.pixelSize: height*0.75
-
-        background: Rectangle {
-
-          color: "#c8c8c8"
-
-        }
-
-        x: parent.width*0.7575
-        width: parent.width*0.2425
-
-        y: parent.height*0.8416
-        height: parent.height*0.1583
-
-        onClicked: {
-
-          expression+="/"
-          sexpression+="÷"
-
-        }
-
-      }
-
     }
 
+    GridLayout {
+        id: grid
+        anchors.fill: parent
+        columns: 4
+
+        CalcButton {
+            text: "("
+            onClicked: {
+                expression+="("
+                sexpression+="("
+            }
+        }
+
+        CalcButton {
+            text: ")"
+            onClicked: {
+                expression+=")"
+                sexpression+=")"
+            }
+        }
+
+        CalcButton {
+            text: "CE"
+            onClicked: {
+                expression=expression.substr(0, expression.length-1)
+                sexpression=sexpression.substr(0, sexpression.length-1)
+            }
+        }
+
+        CalcButton {
+            text: "C"
+            onClicked: {
+                expression=""
+                sexpression=""
+            }
+        }
+
+        CalcButton {
+            text: "7"
+            onClicked: {
+                expression+="7"
+                sexpression+="7"
+            }
+        }
+
+        CalcButton {
+            text: "8"
+            onClicked: {
+                expression+="8"
+                sexpression+="8"
+            }
+        }
+
+        CalcButton {
+            text: "9"
+            onClicked: {
+                expression+="9"
+                sexpression+="9"
+            }
+        }
+
+        CalcButton {
+            text: "/"
+            onClicked: {
+                expression+="/"
+                sexpression+="÷"
+            }
+        }
+
+        CalcButton {
+            text: "4"
+            onClicked: {
+                expression+="4"
+                sexpression+="4"
+            }
+        }
+        CalcButton {
+            text: "5"
+            onClicked: {
+                expression+="5"
+                sexpression+="5"
+            }
+        }
+        CalcButton {
+            text: "6"
+            onClicked: {
+                expression+="6"
+                sexpression+="6"
+            }
+        }
+
+        CalcButton {
+            text: "x"
+            onClicked: {
+                expression+="*"
+                sexpression+="x"
+            }
+        }
+        CalcButton {
+            text: "1"
+            onClicked: {
+                expression+="1"
+                sexpression+="1"
+            }
+        }
+        CalcButton {
+            text: "2"
+            onClicked: {
+                expression+="2"
+                sexpression+="2"
+            }
+        }
+
+        CalcButton {
+            text: "3"
+            onClicked: {
+                expression+="3"
+                sexpression+="3"
+            }
+        }
+
+        CalcButton {
+            text: "-"
+            onClicked: {
+                expression+="-"
+                sexpression+="-"
+            }
+        }
+
+        CalcButton {
+            text: "."
+            onClicked: {
+                expression+="."
+                sexpression+="."
+            }
+        }
+        CalcButton {
+            text: "0"
+            onClicked: {
+                expression+="0"
+                sexpression+="0"
+            }
+        }
+        CalcButton {
+            text: "="
+            onClicked: {
+                computer.expression = expression
+                result = computer.result
+                expression = result
+                sexpression = result
+            }
+        }
+        CalcButton {
+            text: "+"
+            onClicked: {
+                expression+="+"
+                sexpression+="+"
+            }
+        }
+    }
+}
