@@ -30,7 +30,7 @@ to run Calculator
 
 ## Authors
 
-Antoni Przybylik
+Antoni Przybylik  
 Nicolas Fella
 
 ## License
